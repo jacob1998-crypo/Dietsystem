@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- templates/recommendations.html -->
+
+<!-- templates/recommendations.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Recommendations</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        .body{
+            padding-top:10%;
+        }
+    </style>
+</head>
+<body>
+    
+<div class="body">
+        {% if food_recommendations %}
+            <h2>Food Recommendations for People with{{user_profile.conditions}}</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Examples</th>
+                        <th>Benefits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for recommendation in food_recommendations %}
+                        <tr>
+                            <td>{{ recommendation.category }}</td>
+                            <td>{{ recommendation.examples }}</td>
+                            <td>{{ recommendation.benefits }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No food recommendations available.</p>
+        {% endif %}
+
+</div>
+
+
+{% endblock %}

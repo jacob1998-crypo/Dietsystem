@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block title %} |home{% endblock %}
+
+{% block content %}
+{% load static %}
+<style>
+	section{
+	
+	}
+	*{
+		box-sizing:border-box;
+	}
+	section  {
+		width: 100%;
+		height: 100vh;
+		background-image: url("{% static 'images/new.jpg' %}");
+		background-attachment: fixed;
+		background-size: cover;
+		background-position: center;
+		position: relative;
+		display:flex;
+		flex-wrap:wrap;
+
+	  }
+	  section .container {
+		margin:auto;
+		max-width:1170px;
+		width:100%;
+		
+
+
+	}
+	.home-text{
+		text-align:center;
+		position:relative;
+		z-index: 2;
+	}
+	.home-text h1{
+		color:white;
+		font-size:50px;
+		line-height:56px;
+		font-weight:700px;
+
+	}
+	.home-text p{
+		margin:0;
+
+	}
+	.home-text p span{
+		font-size:40px;
+		color:#ff2c45;
+		font-weight:700;
+		display:inline-block;
+		display:none;
+	}
+	.home-text p span.text-in{
+		display:block;
+		animation:textIn .5s ease;
+	}
+	@keyframes textIn{
+		0%{
+			transform:translateY(100%);
+		}
+		0%{
+			transform:translateY(100%);
+		}
+	}
+	
+	section::before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.55); /* Change the last value for the desired opacity */
+		z-index: 1; /* Adjust the z-index to position the overlay behind or above other elements */
+	}
+	
+</style>
+
+
+<section id="dashboard-content">
+	<div class="container">
+		<div class="row">
+			<div class="home-text">
+				<h1>8 tips for healthy eating</h1> 
+				<p class="animate">
+					<span>Base your meals on higher fibre starchy carbohydrates. ...</span>
+				    <span>Eat lots of fruit and veg. ...</span>
+					<span>Eat more fish, including a portion of oily fish. ...</span>
+					<span>Cut down on saturated fat and sugar. ...</span>
+					<span>Eat less salt: no more than 6g a day for adults. ...</span>
+					<span>Get active and be a healthy weight. ...</span>
+					<span>Do not get thirsty. ...</span>
+					<span>Do not skip breakfast.</span> 
+				</p>
+			</div>
+		</div>
+
+	</div>
+</section>
+<script> 
+	const txt =document.querySelector(".animate").children,
+	      txtlen=txt.length;
+	 let index=0;
+    function animateText(){
+		for (let i=0;i<txtlen;i++){
+			txt[i].classList.remove("text-in");
+		}
+		txt[index].classList.add("text-in");
+		if (index ==txtlen-1){
+			index=0;
+		}
+		else{
+			index++;
+		}
+
+
+		setTimeout(animateText,3000);
+
+	}
+	window.onload=animateText;
+	
+
+</script>
+
+{% endblock %}

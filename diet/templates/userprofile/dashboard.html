@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %} | Dashboard{% endblock %}
+{% load static %}
+{% block content %}
+<style>
+	.baty{
+		width:100%;
+		height:100vh;
+		margin-top:80px;
+
+	}
+	.middle li a{
+		text-decoration: none;
+		color: black;
+		font-weight:700;
+		margin-left:20px;
+		border-radius: 5px;
+        margin-top:10%;
+	}
+	#right{
+		margin-left:100%;
+	}
+	.contain{
+		background-image: url("{% static 'images/new1.jpg' %}");
+		background-attachment: fixed;
+		background-size: cover;
+		background-position: center;
+		position: relative;
+		width:100%;
+		height:100vh;
+		margin:0;
+	}
+	#navbar{
+		color:white;
+	}
+</style>
+  <!-- Navbar -->
+  <nav class="baty">
+
+	<div class="contain">
+	  <div class="links" id="navbar">
+		<ul class="middle">
+		  <li><h2>Welcome {{ user.username }}</h2></li>
+		  <li><a class="nav-link" href="{% url 'update_profile' %}">Get Recommendation</a></li>
+		  <li><a class="nav-link" href="#">Meals plan</a></li>
+		  <li><a class="nav-link" href="#">Shopping List</a></li>
+		  <li><a class="nav-link"href="#"id = 'right'>UserProfile</a></li>
+		</ul>
+       </div>
+	</div>
+	<div>
+	</div>
+	<h4></h4>
+  </nav>
+  {%endblock%}

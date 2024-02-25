@@ -1,0 +1,186 @@
+<!-- update_profile.html -->
+
+{% extends "base.html" %}
+
+{% block title %} |Update Your Profile{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- <link rel="stylesheet" href="{% static 'css/register.css' %}" /> -->
+<style>
+  #register{
+    
+    position: relative;
+    height: 100vh;
+		background-image: url("{% static 'images/new1.jpg' %}");
+		background-attachment: fixed;
+		background-size: cover;
+		background-position: center;
+  }
+   form{
+    background-color:red;
+    color:red;
+    padding-left:30px;
+   }
+  /* Add some padding to the top and bottom of the section */
+  #register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0 20px 0;
+  }
+  .row{
+    display: flex;
+  }
+  /* Center the form horizontally */
+  #register .container {
+    width: 100%;
+    display: flex;
+    top:0;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.45);
+  }
+
+  #register form{
+    width: 500px;
+    height: 100vh;
+    border: none;
+    background-color:transparent;
+    
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+    top: 0;
+  }
+
+  #register .form-group{
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  /* Style the form header */
+  #register h4 {
+    margin-bottom: 30px;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  /* Style the form labels */
+  #register label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    width: 30%;
+  }
+ 
+  
+  /* Style the form inputs */
+  #register input[type="text"],
+  #register input[type="email"],
+  #register input[type="password"],
+  #register input[type="number"]{
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    background-color: #f7f7f7;
+    border: none;
+    box-shadow: none;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  /* Style the form inputs on focus */
+  #register input[type="text"]:focus,
+  #register input[type="number"]:focus
+  #register input[type="email"]:focus,
+  #register input[type="password"]:focus {
+    outline: none;
+    background-color: transparent;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style the form submit button */
+  #register input[type="submit"] {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: fit-content;
+    padding: 5px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  /* Style the form submit button on hover */
+  #register input[type="submit"]:hover {
+    background-color: #c82333;
+    cursor: pointer;
+  }
+
+  #register .form-group input{
+    border: 1px solid #ccc;
+    border-left: none;
+  }
+
+  .check{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  input[type=radio][name=account-type]:before {
+  content: "";
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  color: #007bff;
+  margin: 0;
+  border-radius: 50%;
+  border: 2px solid #333;
+}
+
+input[type=radio][name=account-type]:checked:before {
+  background-color: rgb(198, 34, 204);
+}
+
+label [for=owner] {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  
+}
+span{
+  color:black;
+  font-size: 20px;
+  margin-left: 16px;
+}
+
+</style>
+
+
+   
+<section id="register">
+  <div class="container">
+    <h4>Update Profile</h4>
+        <form action="{% url 'update_profile' %}" method="POST" id="user-registration-form" >
+          {% csrf_token %}
+          {{ form.as_p }}
+            <button type="submit">Signup</button>
+        </form>
+  </div>
+  
+</section>
+
+{%endblock%}
